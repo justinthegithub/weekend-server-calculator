@@ -13,11 +13,81 @@ let calculations = [1,2]
 // Here's a wonderful place to make some routes:
 
 // GET /calculations
+
+
+//example datafrom instructions.md
+const calculations = [
+  {
+    numOne: 3,
+    numTwo: 5,
+    operator: '+',
+    result: 8
+  },
+  {
+    numOne: 11,
+    numTwo: 7,
+    operator: '-',
+    result: 4
+  }
+];
+
 app.get('/calculations', (req, res) => {
   res.status(200).json(calculations);
 });
 
 // POST /calculations
+
+function  calculateNumbers(a,b) {
+  console.log("calculateNumbers() is working!")
+  console.log("Succesfully passing in the first number", a, "And the second number:", b)
+
+}
+
+function add(a,b) {
+return a+b
+}
+function subtract(a,b){
+return a-b
+}
+
+function multiply(a,b){
+return a*b;
+}
+
+function divide(a,b){
+return a/b
+
+}
+
+function decideCalculation(a, b, operator){
+if (operator ==='+'){
+return add(a,b)
+}
+else if (operator ==='-'){
+  return subtract(a,b)
+}
+else if (operator ==='*'){
+  return multiply(a,b)
+}
+else if (operator ==='/'){
+  return divide(a,b)
+}
+}
+
+
+app.post('calculations', (req, res)=>{
+  let {numOne,numTwo,operator}=req.body
+
+
+
+
+
+})
+
+
+
+
+
 
 
 // PLEASE DO NOT MODIFY ANY CODE BELOW THESE BEARS:
