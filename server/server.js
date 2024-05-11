@@ -81,7 +81,7 @@ app.post('/calculations', (req, res)=>{
   let {numOne,numTwo,operator}=req.body
 let result =decideCalculation(numOne, numTwo, operator);
 let newCalculation={numOne,numTwo,operator, result};
-calculuations.push(newCalculation);
+calculations.push(newCalculation);
 res.status(201).json(newCalculation)
 
 

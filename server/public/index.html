@@ -18,12 +18,13 @@
       <button type="button" onClick="selectOperator(`*`)">*</button>
       <button type="button" onClick="selectOperator(`/`)">/</button>
       <input id="numberTwo" data-testid="numTwo" placeholder="Second Number">
-      <button onclick="equalsClick()">=</button>
+      <button type ="button" onclick="equalsClick(event)">=</button>
       <button>C</button>
     </form>
 
     <section data-testid="recentResult">
       <!-- The most recent calculation result goes here. -->
+      <div id="recentResult"></div>
     </section>
 
     <section data-testid="resultHistory">

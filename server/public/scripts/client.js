@@ -32,15 +32,16 @@ return selectedOperator
 
     function equalsClick(event) {
         event.preventDefault(); 
-    
+    console.log("equalsClick works!")
         
         let numberOne = document.getElementById('numberOne').value;
         let numberTwo = document.getElementById('numberTwo').value;
         console.log('First Number:', numberOne);
         console.log('Second Number:', numberTwo);
+
         axios.post('/calculations', { numOne: numberOne, numTwo: numberTwo, operator: selectedOperator })
         .then(function(response) {
-            let recentResult =document.getElementById('numberOne').value;
+            let recentResult =document.getElementById('recentResult')
             recentResult.innerHTML= `${response.data.numOne} ${response.data.operator} ${response.data.numTwo} = ${response.data.result}`;
             getCalculations();  
         })
