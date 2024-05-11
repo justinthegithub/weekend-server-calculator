@@ -7,7 +7,8 @@ app.use(express.static('server/public'));
 
 // Global variable that will contain all of the
 // calculation objects:
-let calculations = [1,2]
+
+let calculations = []
 
 
 // Here's a wonderful place to make some routes:
@@ -16,7 +17,7 @@ let calculations = [1,2]
 
 
 //example datafrom instructions.md
-const calculations = [
+ /*calculations = [
   {
     numOne: 3,
     numTwo: 5,
@@ -30,9 +31,10 @@ const calculations = [
     result: 4
   }
 ];
-
+*/
 app.get('/calculations', (req, res) => {
   res.status(200).json(calculations);
+  console.log(req.data)
 });
 
 // POST /calculations
@@ -75,9 +77,12 @@ else if (operator ==='/'){
 }
 
 
-app.post('calculations', (req, res)=>{
+app.post('/calculations', (req, res)=>{
   let {numOne,numTwo,operator}=req.body
-
+let result =decideCalculation(numOne, numTwo, operator);
+let newCalculation={numOne,numTwo,operator, result};
+calculuations.push(newCalculation);
+res.status(201).json(newCalculation)
 
 
 

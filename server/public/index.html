@@ -13,12 +13,12 @@
 
     <form data-testid="calculator">
       <input id ="numberOne" data-testid="numOne" placeholder="First Number">
-      <button>+</button>
-      <button>-</button>
-      <button>*</button>
-      <button>/</button>
+      <button type="button" onClick="selectOperator(`+`)">+</button>
+      <button type="button" onClick="selectOperator(`-`)">-</button>
+      <button type="button" onClick="selectOperator(`*`)">*</button>
+      <button type="button" onClick="selectOperator(`/`)">/</button>
       <input id="numberTwo" data-testid="numTwo" placeholder="Second Number">
-      <button onclick="equalsClick(event)">=</button>
+      <button onclick="equalsClick()">=</button>
       <button>C</button>
     </form>
 
