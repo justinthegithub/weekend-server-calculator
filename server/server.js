@@ -7,17 +7,95 @@ app.use(express.static('server/public'));
 
 // Global variable that will contain all of the
 // calculation objects:
-let calculations = [1,2]
+
+let calculations = []
 
 
 // Here's a wonderful place to make some routes:
 
 // GET /calculations
+
+
+//example datafrom instructions.md
+ /*calculations = [
+  {
+    numOne: 3,
+    numTwo: 5,
+    operator: '+',
+    result: 8
+  },
+  {
+    numOne: 11,
+    numTwo: 7,
+    operator: '-',
+    result: 4
+  }
+];
+*/
 app.get('/calculations', (req, res) => {
+  console.log('app.get /calculations is working in server.js')
+  console.log(`the request: ${req} and the response:${res}`)
   res.status(200).json(calculations);
+  console.log(req.data)
 });
 
 // POST /calculations
+
+function  calculateNumbers(a,b) {
+  console.log("calculateNumbers() is working!")
+  console.log("Succesfully passing in the first number", a, "And the second number:", b)
+
+}
+
+function add(a,b) {
+return a+b
+}
+function subtract(a,b){
+return a-b
+}
+
+function multiply(a,b){
+return a*b;
+}
+
+function divide(a,b){
+return a/b
+
+}
+
+function decideCalculation(a, b, operator){
+if (operator ==='+'){
+return add(a,b)
+}
+else if (operator ==='-'){
+  return subtract(a,b)
+}
+else if (operator ==='*'){
+  return multiply(a,b)
+}
+else if (operator ==='/'){
+  return divide(a,b)
+}
+}
+
+
+app.post('/calculations', (req, res)=>{
+  console.log("app.post /calculuations is working. Here is the req", req)
+  let {numOne,numTwo,operator}=req.body
+let result =decideCalculation(numOne, numTwo, operator);
+let newCalculation={numOne,numTwo,operator, result};
+calculations.push(newCalculation);
+res.status(201).json(newCalculation)
+
+
+
+
+})
+
+
+
+
+
 
 
 // PLEASE DO NOT MODIFY ANY CODE BELOW THESE BEARS:
