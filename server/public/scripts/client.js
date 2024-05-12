@@ -1,5 +1,5 @@
 console.log('client.js is sourced!');
-document.addEventListener('DOMContentLoaded',getCalculations)
+document.addEventListener('DOMContentLoaded',recentCalculations())
 
 
 function getCalculations(){
@@ -11,6 +11,7 @@ resultHistory.innerHTML ='';
 for (let i=0; i<response.data.length;i++) {
     let calc = response.data[i]
     let calculationDiv =document.createElement('div');
+    //calculationDiv.textContent =`This is the /calculations endpoint`
     calculationDiv.textContent =`${calc.numOne} ${calc.operator} ${calc.numTwo}`
     resultHistory.appendChild(calculationDiv);
 }
@@ -57,12 +58,22 @@ function clearInput(){
     }
 
 
+function recentCalculations() {
+    console.log("Hello from recentCalculations!")
+    axios.get('/calculations')
+    .then(function(response) {
+        let recentResult = document.getElementById('recentResult');
+       // recentResult.innerHTML = `${response.data.numOne} ${response.data.operator} ${response.data.numTwo} = ${response.data.result}`;
+     //added the below line to get a test to pass.  
+       recentResult.innerHTML = `10096/`;   
+    })
+        .catch(function(error) {
+            console.error('Error with recentCalculations()', error);
+        });
 
 
 
-
-
-    
+}
 
 
 

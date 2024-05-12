@@ -48,7 +48,7 @@ function  calculateNumbers(a,b) {
 }
 
 function add(a,b) {
-return a+b
+return Number(a)+Number(b)
 }
 function subtract(a,b){
 return a-b
@@ -64,6 +64,8 @@ return a/b
 }
 
 function decideCalculation(a, b, operator){
+  a=Number(a)
+  b=Number(b)
 if (operator ==='+'){
 return add(a,b)
 }
