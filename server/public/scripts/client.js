@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded',getCalculations)
 
 
 function getCalculations(){
+    console.log("Hello from getCalculations()")
     axios.get('/calculations')
     .then(function(response) {
 let resultHistory = document.getElementById('resultHistory')
@@ -25,6 +26,7 @@ for (let i=0; i<response.data.length;i++) {
 
 let selectedOperator =''
 function selectOperator(operator) {
+console.log('Hello from selectOperator in client.js')
 selectedOperator =operator
 return selectedOperator
 }

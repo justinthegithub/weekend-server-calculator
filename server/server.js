@@ -33,6 +33,8 @@ let calculations = []
 ];
 */
 app.get('/calculations', (req, res) => {
+  console.log('app.get /calculations is working in server.js')
+  console.log(`the request: ${req} and the response:${res}`)
   res.status(200).json(calculations);
   console.log(req.data)
 });
@@ -78,6 +80,7 @@ else if (operator ==='/'){
 
 
 app.post('/calculations', (req, res)=>{
+  console.log("app.post /calculuations is working. Here is the req", req)
   let {numOne,numTwo,operator}=req.body
 let result =decideCalculation(numOne, numTwo, operator);
 let newCalculation={numOne,numTwo,operator, result};
