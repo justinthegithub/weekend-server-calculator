@@ -6,13 +6,14 @@ function getCalculations(){
     console.log("Hello from getCalculations()")
     axios.get('/calculations')
     .then(function(response) {
+        console.log("Response data:", response.data);
 let resultHistory = document.getElementById('resultHistory')
 resultHistory.innerHTML ='';
 for (let i=0; i<response.data.length;i++) {
     let calc = response.data[i]
     let calculationDiv =document.createElement('div');
     //calculationDiv.textContent =`This is the /calculations endpoint`
-    calculationDiv.textContent =`${calc.numOne} ${calc.operator} ${calc.numTwo}`
+    calculationDiv.innerText =`${calc.numOne} ${calc.operator} ${calc.numTwo} = ${calc.result}`
     resultHistory.appendChild(calculationDiv);
 }
 
