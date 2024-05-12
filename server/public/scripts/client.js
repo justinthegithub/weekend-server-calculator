@@ -30,8 +30,11 @@ console.log('Hello from selectOperator in client.js')
 selectedOperator =operator
 return selectedOperator
 }
-
-
+function clearInput(){
+    console.log("clearInput works!");
+    document.getElementById('numberOne').value = '';
+    document.getElementById('numberTwo').value = '';
+}
     function equalsClick(event) {
         event.preventDefault(); 
     console.log("equalsClick works!")
