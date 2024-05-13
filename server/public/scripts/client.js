@@ -26,7 +26,7 @@ for (let i=0; i<response.data.length;i++) {
 
 
 
-let selectedOperator =''
+let selectedOperator ='-'
 function selectOperator(operator) {
 console.log('Hello from selectOperator in client.js')
 selectedOperator =operator
