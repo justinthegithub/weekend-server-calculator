@@ -32,6 +32,20 @@ let calculations = []
   }
 ];
 */
+calcHistory=[  {
+  numOne: 11,
+  numTwo: 7,
+  operator: '-',
+  result: 4
+}]
+
+app.get(('/getHistory'), (req, res)=>{
+res.send(calcHistory)
+})
+
+
+
+
 app.get('/calculations', (req, res) => {
   console.log('app.get /calculations is working in server.js')
   console.log(`the request: ${req} and the response:${res}`)

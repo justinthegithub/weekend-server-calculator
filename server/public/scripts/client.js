@@ -1,5 +1,49 @@
 console.log('client.js is sourced!');
-document.addEventListener('DOMContentLoaded',recentCalculations())
+
+
+let getHistory = () => {
+    axios({
+        method: "GET",
+        url: "/getHistory"
+    })
+    .then((response) => {
+        console.log("response.data from /getHistory:", response.data);
+        let history = response.data;
+        renderHistory();
+    })
+    .catch((error) => {
+        console.error("There was an error in your GET /getHistory", error);
+        alert("GET /getHistory isn't working so good");
+    });
+};
+
+document.addEventListener('DOMContentLoaded', () => getHistory());
+
+
+
+let renderHistory =(calcHistory)=>{
+    console.log("renderHistory()", history)
+    //selector for id "resultHistory"
+    //Loop over history
+    //append each history to resultHistory in a div
+    let resultHistory =document.getElementById("resultHistory")
+    console.log("resultHistory", resultHistory)
+    resultHistory.innerHTML = "";
+    for (let history of calcHistory) {
+        console.log("current history", history)
+        resultHistory.innerHTML += `
+        <div>history.num1</div>
+<div>history.num2</div>
+<div>history.operator</div>
+<div>history.result</div>
+`
+    }
+let recentResult =document.getElementById("recentResult")
+let lastHistory = calcHistory[calcHistory.length-1]
+recentResult.innerHTML=`
+<div>${lastHistory.result}</div>
+`
+}
 
 
 function getCalculations(){
