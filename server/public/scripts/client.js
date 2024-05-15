@@ -26,15 +26,14 @@ let renderHistory = (calcHistory) => {
     resultHistory.innerHTML = ""; // Clear previous entries
     for (let i = 0; i < calcHistory.length; i++) {
         console.log("current history", calcHistory[i]);
+        
+        let calc = calcHistory[i];
         resultHistory.innerHTML += `
-        <div>${calcHistory[i].numOne}</div>
-        <div>${calcHistory[i].numTwo}</div>
-        <div>${calcHistory[i].operator}</div>
-        <div>${calcHistory[i].result}</div>
+        <div>${calc.numOne} ${calc.operator} ${calc.numTwo} = ${calc.result}</div>
         `;
     }
 
-    // Display the most recent result in a different element
+    
     if (calcHistory.length > 0) {
         let recentResult = document.getElementById("recentResult");
         let lastHistory = calcHistory[calcHistory.length - 1];
@@ -42,14 +41,14 @@ let renderHistory = (calcHistory) => {
     }
 };
 
-// Fetch and display calculations upon request
+
 function getCalculations() {
     console.log("Hello from getCalculations()");
     axios.get('/calculations')
     .then(function(response) {
         console.log("Response data:", response.data);
         let resultHistory = document.getElementById('resultHistory');
-        resultHistory.innerHTML = ''; // Clear previous entries
+        resultHistory.innerHTML = ''; 
         for (let i = 0; i < response.data.length; i++) {
             let calc = response.data[i];
             let calculationDiv = document.createElement('div');
@@ -88,7 +87,7 @@ function equalsClick(event) {
     .then(function(response) {
         let recentResult = document.getElementById('recentResult');
         recentResult.innerHTML = `${response.data.numOne} ${response.data.operator} ${response.data.numTwo} = ${response.data.result}`;
-        getCalculations();  // Refresh the list of calculations
+        getCalculations();  
     })
     .catch(function(error) {
         console.error('Error with POST calculation:', error);
