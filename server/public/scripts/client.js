@@ -1,6 +1,6 @@
 console.log('client.js is sourced!');
 
-// Function to fetch history and render it
+=
 let getHistory = () => {
     axios({
         method: "GET",
@@ -16,14 +16,13 @@ let getHistory = () => {
     });
 };
 
-// Event listener to fetch history once the DOM is fully loaded
+
 document.addEventListener('DOMContentLoaded', () => getHistory());
 
-// Function to render history on the page
 let renderHistory = (calcHistory) => {
     console.log("renderHistory()", calcHistory);
     let resultHistory = document.getElementById("resultHistory");
-    resultHistory.innerHTML = ""; // Clear previous entries
+    resultHistory.innerHTML = ""; 
     for (let i = 0; i < calcHistory.length; i++) {
         console.log("current history", calcHistory[i]);
         
